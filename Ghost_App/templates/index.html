@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Post</title>
+</head>
+<body>
+    <h1>Home Page</h1>
+    <span>Create New <a href="/addpost">Post</a></span>
+    <span>View only <a href="/boasts">Boasts</a></span>
+    <span>View only <a href="/roasts">Roasts</a></span>
+    <span>sort by <a href="/rank">Rank</a></span>
+    <span>View <a href="/">All</a></span>
+    <ul>
+        {% for post in data %}
+        <li>
+            {{post.description}}
+            <br>
+            {% if post.is_boast %}
+            Boast
+            {% else %}
+            Roast
+            {% endif %}
+            <br>
+            {{post.score}}
+            <br>
+            ID: {{post.id}}
+            <br>
+            <button>
+                <a href='/like/{{post.id}}/'>
+                    like
+                </a>
+            </button>
+            <button>
+                <a href='/dislike/{{post.id}}/'>
+                    dislike
+                </a>
+            </button>
+            <br>
+            {{post.date}}
+            
+        </li>
+        <br>
+        {% endfor %}
+    </ul>
+</body>
+</html>
