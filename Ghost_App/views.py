@@ -43,14 +43,14 @@ def dislike_post(request, post_id):
 
 
 def boasts(request):
-    data = BoastOrRoast.objects.order_by('-date')
-    data = data.objects.filter(is_boast=True)
+    data = BoastOrRoast.objects.order_by('-date').filter(is_boast=True)
+    # data = data.objects.filter(is_boast=True)
     return render(request, 'index.html', {'data':data})
 # sort by time submitted
 
 def roasts(request):
-    data = BoastOrRoast.objects.order_by('-date')
-    data = data.objects.filter(is_boast=False)
+    data = BoastOrRoast.objects.order_by('-date').filter(is_boast=False)
+    # data = data.objects.filter(is_boast=False)
     return render(request, 'index.html', {'data':data})
 # sort by time submitted
 
